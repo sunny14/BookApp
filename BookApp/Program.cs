@@ -13,7 +13,7 @@
             fiction.Read(50);
             fiction.PrintBookDetails();
 
-            //go back to chapter 2 and read its first page
+            //go back to chapter 2 (page 43) and read one page
             fiction.SetCurrentPage(43);
             fiction.PrintBookDetails();
             fiction.Read();
@@ -25,10 +25,8 @@
             }
             else
             {
-                int pagesLeft = maxPages - fiction.GetCurrentPage();
-                Console.WriteLine("Read " + pagesLeft + " more pages!");
+                Console.WriteLine("Read " + fiction.GetPagesLeftToRead() + " more pages!");
             }
-
 
         }
     }

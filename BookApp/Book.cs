@@ -67,11 +67,10 @@ namespace BookApp
             }
         }
 
-        public void StartAgain()
+        public int GetPagesLeftToRead()
         {
-            currentPage = 0;
+            return maxPage - currentPage;
         }
-
 
     }
 }
