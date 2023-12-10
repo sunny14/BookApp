@@ -25,7 +25,7 @@
             }
             else
             {
-                Console.WriteLine("Read " + fiction.GetPagesLeftToRead() + " more pages!");
+                Console.WriteLine("Read " + fiction.GetPagesTillTheEnd() + " more pages!");
             }
 
         }

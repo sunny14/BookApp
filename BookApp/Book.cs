@@ -67,7 +67,7 @@ namespace BookApp
             }
         }
 
-        public int GetPagesLeftToRead()
+        public int GetPagesTillTheEnd()
         {
             return maxPage - currentPage;
         }
