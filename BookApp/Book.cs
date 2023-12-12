@@ -12,58 +12,84 @@ namespace BookApp
         private int maxPage;
         private int currentPage = 0;
 
+        /*
+         * בנאי - constructor
+         */
         public Book(String nameInput, int pagesInput)
         {
             name = nameInput;
             maxPage = pagesInput;
         }
 
-        public int GetCurrentPage()
+        /*
+         * השיטה מחזירה את העמוד הנוכחי
+         */
+        public int GetCurrentPage()    
         {
             return currentPage;
         }
 
+        /*
+         * השיטה קובעת עמוד נוכחי חדש
+         */
         public void SetCurrentPage(int newPage)
         {
-            currentPage = newPage;
+            //אם העמוד החדש בטווח בין 0 למספר עמודים בספר
+            if (newPage >=0 && newPage <=maxPage)
+            {
+                //קבע את העמוד החדש
+                currentPage = newPage;
+            }
+            else   //אחרת
+            {
+                Console.WriteLine("Cannot set page "+newPage+", it should be from 0 to "+maxPage);
+            }
+            
         }
 
+        /*
+         * השיטה מדפיסה את הפרטים של הספר
+         * השיטה לא מחזירה כלום - void
+         */
         public void PrintBookDetails()
         {
             Console.WriteLine("Book name is "+name+", it is "+maxPage+" pages long, currently I am on "+currentPage+" page!");
         }
 
-        public bool isFinished()
-        {
-            return currentPage == maxPage;
-        }
-
+        /*
+         * השיטה "קוראת" עמוד אחד
+         * השיטה מעדכנת את התכונה currentPage 
+         * השיטה לא מחזירה כלום - void
+         */
         public void Read()
         {
-            if (isFinished())
-            {
-                Console.WriteLine("Cannot read, the book is finished!");
-            }
-            else
+            //אם לא הגענו לעמוד האחרון בספר
+            if (currentPage < maxPage)
             {
                 currentPage++;
             }
-        }
-
-        public void Read(int pagesToRead)
-        {
-            if (isFinished())
+            else    //אם הגענו לעמוד האחרון בספר
             {
+                //לא נתקדם ונדפיס שסיימנו את הספר
                 Console.WriteLine("Cannot read, the book is finished!");
             }
-            else if (currentPage+pagesToRead > maxPage)
+        }
+
+        /*
+         * השיטה "קוראת" מספר עמודים
+         * השיטה מעלה את הערך של התכונה currentPage 
+         * השיטה לא מחזירה כלום - void
+         */
+        public void Read(int pagesToRead)
+        {
+            if (currentPage + pagesToRead > maxPage)
             {
-                int pagesLeft = maxPage - currentPage;
+                int pagesLeft = GetPagesTillTheEnd();
                 Console.WriteLine("Cannot read "+pagesToRead+" pages, only "+ pagesLeft+ " pages left!");
             }
             else
             {
-                currentPage+=pagesToRead;
+                currentPage += pagesToRead;
             }
         }
 

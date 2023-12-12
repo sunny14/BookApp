@@ -5,8 +5,7 @@
        public static void Main (String[] args)
         {
             //create Hobbit book
-            int maxPages = 320;
-            Book fiction = new Book("Hobbit", maxPages);
+            Book fiction = new Book("Hobbit", 320);
             fiction.PrintBookDetails();
 
             //read 50 pages overnight
@@ -19,14 +18,7 @@
             fiction.Read();
             fiction.PrintBookDetails();
 
-            if (fiction.isFinished())
-            {
-                Console.WriteLine("I finished the book!");
-            }
-            else
-            {
-                Console.WriteLine("Read " + fiction.GetPagesTillTheEnd() + " more pages!");
-            }
+            fiction.Read(500);
 
         }
     }
